@@ -121,3 +121,7 @@ a.desc:after {
     border: 2px solid;
     border-radius: 10px;
 }
+
+.game div:hover {
+    background-color: blueviolet;
+}
