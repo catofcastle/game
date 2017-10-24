@@ -113,3 +113,11 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.game div {
+    height: 100px;
+    width: 100px;
+    background-color: yellowgreen;
+    border: 2px solid;
+    border-radius: 10px;
+}
