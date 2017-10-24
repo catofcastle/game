@@ -1,0 +1,6 @@
+[Tue Oct 24 20:36:28.794506 2017] [:error] [pid 17060] [client 127.0.0.1:33994] PHP Notice:  Trying to get property of non-object in /var/www/game.loc/vendor/yiisoft/yii2/log/Dispatcher.php on line 187
+[Tue Oct 24 20:36:28.794596 2017] [:error] [pid 17060] [client 127.0.0.1:33994] PHP Notice:  Trying to get property of non-object in /var/www/game.loc/vendor/yiisoft/yii2/log/Dispatcher.php on line 187
+[Tue Oct 24 20:36:28.794608 2017] [:error] [pid 17060] [client 127.0.0.1:33994] PHP Notice:  Trying to get property of non-object in /var/www/game.loc/vendor/yiisoft/yii2/log/Dispatcher.php on line 187
+[Tue Oct 24 20:36:31.165601 2017] [:error] [pid 17061] [client 127.0.0.1:33996] PHP Notice:  Trying to get property of non-object in /var/www/game.loc/vendor/yiisoft/yii2/log/Dispatcher.php on line 187
+[Tue Oct 24 20:36:31.165684 2017] [:error] [pid 17061] [client 127.0.0.1:33996] PHP Notice:  Trying to get property of non-object in /var/www/game.loc/vendor/yiisoft/yii2/log/Dispatcher.php on line 187
+[Tue Oct 24 20:36:31.165696 2017] [:error] [pid 17061] [client 127.0.0.1:33996] PHP Notice:  Trying to get property of non-object in /var/www/game.loc/vendor/yiisoft/yii2/log/Dispatcher.php on line 187

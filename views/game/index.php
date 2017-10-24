@@ -17,7 +17,7 @@ $this->registerJs(
     <?php for ($i = 1; $i <= $grid['widht']; $i++): ?>
         <div class="row game">
             <?php for ($j = 1; $j <= $grid['height']; $j++): ?>
-                <div class="col-md-1" id="<?= $i . $j ?>"></div>
+                <div class="col-md-1" id="<?= $i . '_' . $j ?>"></div>
             <?php endfor; ?>
         </div>
     <?php endfor; ?>
