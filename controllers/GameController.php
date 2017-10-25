@@ -36,7 +36,12 @@ class GameController extends Controller
                 }
             }
             
-            return $neighbors;
+            if (rand(0, 100) > 96) {
+                $index = rand(0, count($neighbors) - 1);
+                unset($neighbors[$index]);
+            }
+            
+            return json_encode($neighbors);
         }
     }
 }
