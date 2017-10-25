@@ -11,7 +11,18 @@ $(document).ready(function () {
             url: yiiOptions.getNeighbors,
             data: 'id=' + id,
             success: function (response) {
-                console.log(response);
+                var neighbors = response;
+                
+                $('.game div').each(function () {
+                    var id = this.id;
+                    if (neighbors.includes(id)) {
+                        if ($('.game #' + id).html() === '') {
+                            $('.game #' + id).html('OK');
+                        } else {
+                            $('.game #' + id).html('');
+                        }    
+                    }
+                });
             },
             error: function () {
 
