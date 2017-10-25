@@ -27,8 +27,11 @@ class GameController extends Controller
             
             for ($i = -1; $i <= 1; $i++) {
                 for ($j = -1; $j <= 1; $j++) {
-                    $rowIndex = ($position[0] + $i + $grid['widht']) % $grid['widht'];
-                    $colIndex = ($position[1] + $j + $grid['height']) % $grid['height'];
+                    $rowIndex = $position[0] + $i;
+                    $colIndex = $position[1] + $j;
+                    if (($rowIndex == 0 || $colIndex == 0) || ($rowIndex > $grid['widht'] || $colIndex > $grid['height'])) {
+                        continue;
+                    }
                     $neighbors[] = $rowIndex . '_' . $colIndex;
                 }
             }
