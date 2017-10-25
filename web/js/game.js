@@ -19,7 +19,7 @@ $(document).ready(function () {
             data: 'id=' + id,
             success: function (response) {
                 var neighbors = response;
-                console.log(neighbors);
+                
                 $('.game div').each(function () {
                     var id = this.id;
                     if (neighbors.includes(id)) {
