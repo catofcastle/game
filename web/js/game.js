@@ -5,6 +5,7 @@ var urlHelper = function ($route) {
 $(document).ready(function () {
     $('.game div').click(function () {
         var id = this.id;
+        var i = 0;
         
         $.ajax({
             method: "POST",
@@ -20,14 +21,21 @@ $(document).ready(function () {
                             $('.game #' + id).html('OK');
                         } else {
                             $('.game #' + id).html('');
-                        }    
+                        }
+                    }
+                    if ($(this).html() === 'OK') {                        
+                        ++i;                        
                     }
                 });
+                
+                if (yiiOptions.sizeField === i) {
+                    alert('Congratulations! You win!');
+                }
             },
             error: function () {
 
             }
-        });
+        });        
     });
 });
 

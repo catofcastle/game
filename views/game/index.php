@@ -5,7 +5,8 @@ use yii\web\View;
 $this->registerJsFile('@web/js/game.js', ['depends' => 'yii\web\JqueryAsset']);
 
 $options = [
-    'getNeighbors' => Url::to(['game/get-neighbors'], true)
+    'getNeighbors' => Url::to(['game/get-neighbors'], true),
+    'sizeField' => $grid['widht'] * $grid['height'],
 ];
 $this->registerJs(
     "var yiiOptions = " . \yii\helpers\Json::htmlEncode($options) . ";", View::POS_HEAD, 'yiiOptions'
