@@ -4,6 +4,7 @@ namespace app\controllers;
 use Yii;
 use yii\web\Response;
 use yii\web\Controller;
+use \app\models\Winner;
 
 class GameController extends Controller
 {
@@ -43,7 +44,15 @@ class GameController extends Controller
     public function actionSaveResults()
     {
         if (Yii::$app->request->isAjax) {
+            $data = Yii::$app->request->post();
+            $winnerName = $data['winner'];
+            $winnerScore = $data['score'];
             
+            $winner = new Winner();
+            $winner->name = $winnerName;
+            $winner->score = $winnerScore;
+            $winner->date = date("Y-m-d H:i:s");
+            $winner->insert();
         }
     }
 }
