@@ -52,13 +52,18 @@ $(document).ready(function () {
             complete: function () {
                 if (yiiOptions.sizeField === activeFields) {
                     $('#myModal').modal('show');
+                    if (localStorage.getItem('winner')) {
+                        var storageWinner = localStorage.getItem('winner');
+                        $('#winner').val(storageWinner);
+                    }
                 }
             }
         });
     });
     
     $('#save-results').on('click', function () {
-        var winner = $('#winner').val(); 
+        var winner = $('#winner').val();        
+        localStorage.setItem('winner', winner);
         
         $.ajax({
             method: "POST",

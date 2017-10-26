@@ -47,12 +47,17 @@ class GameController extends Controller
             $data = Yii::$app->request->post();
             $winnerName = $data['winner'];
             $winnerScore = $data['score'];
-            
+
             $winner = new Winner();
             $winner->name = $winnerName;
             $winner->score = $winnerScore;
             $winner->date = date("Y-m-d H:i:s");
             $winner->insert();
         }
+    }
+
+    public function actionTopResults()
+    {
+        
     }
 }
