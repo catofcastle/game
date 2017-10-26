@@ -13,7 +13,7 @@ var count = 0;
 $(document).ready(function () {
     $('.game div').click(function () {
         var id = this.id;
-        var i = 0;
+        var activeFields = 0;
 
         $.ajax({
             method: "POST",
@@ -22,7 +22,7 @@ $(document).ready(function () {
             success: function (response) {
                 var neighbors = response;
                 $('.counter').html(++count);
-                
+
                 $('.game div').each(function () {
                     var id = this.id;
                     if (neighbors.includes(id)) {
@@ -35,23 +35,41 @@ $(document).ready(function () {
                         }
                     }
                     if ($(this).html() === 'OK') {
-                        ++i;
+                        ++activeFields;
                     }
                 });
 
                 if (randomInteger(0, 100) > 96) {
-                   var rand = randomInteger(0, i);
-                   var elems = $('.game .select');
-                   
-                   $(elems[rand]).html('');
-                }
+                    var rand = randomInteger(0, activeFields);
+                    var elems = $('.game .select');
 
-                if (yiiOptions.sizeField === i) {
-                    alert('Congratulations! You win!');
+                    $(elems[rand]).html('');
                 }
             },
             error: function () {
 
+            },
+            complete: function () {
+                if (yiiOptions.sizeField === activeFields) {
+                    $('#myModal').modal('show');
+                }
+            }
+        });
+    });
+    
+    $('#save-results').on('click', function () {
+        var winner = $('#winner').val(); 
+        
+        $.ajax({
+            method: "POST",
+            url: yiiOptions.saveResults,
+            data: {winner: winner, score: count},
+            success: function () {
+                $('#myModal').modal('hide');
+                alert('Ваше имя вписано в анналы победителей!');
+            },
+            error: function () {
+                alert('Opps! Something wrong!');
             }
         });
     });

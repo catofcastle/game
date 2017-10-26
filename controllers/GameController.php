@@ -20,11 +20,11 @@ class GameController extends Controller
         if (Yii::$app->request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             $id = Yii::$app->request->post('id');
-            
+
             $position = explode('_', $id);
             $neighbors = [];
             $grid = Yii::$app->params['grid'];
-            
+
             for ($i = -1; $i <= 1; $i++) {
                 for ($j = -1; $j <= 1; $j++) {
                     $rowIndex = $position[0] + $i;
@@ -35,8 +35,15 @@ class GameController extends Controller
                     $neighbors[] = $rowIndex . '_' . $colIndex;
                 }
             }
-            
+
             return json_encode($neighbors);
+        }
+    }
+
+    public function actionSaveResults()
+    {
+        if (Yii::$app->request->isAjax) {
+            
         }
     }
 }

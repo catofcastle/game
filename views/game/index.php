@@ -6,6 +6,7 @@ $this->registerJsFile('@web/js/game.js', ['depends' => 'yii\web\JqueryAsset']);
 
 $options = [
     'getNeighbors' => Url::to(['game/get-neighbors'], true),
+    'saveResults' => Url::to(['game/save-results'], true),
     'sizeField' => $grid['widht'] * $grid['height'],
 ];
 $this->registerJs(
@@ -25,4 +26,25 @@ $this->registerJs(
     <div class="row counter">
         
     </div>    
-</div>    
+</div>  
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Победитель!</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="winner">Введите ваше имя</label>
+            <input type="text" class="form-control" required id="winner">
+        </div>
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-primary" id="save-results">Сохранить</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
