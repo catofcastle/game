@@ -10,6 +10,23 @@ function randomInteger(min, max) {
 
 var count = 0;
 
+$(window).on('load', function () {
+    for (var i = 0; i < localStorage.length; i++) {
+        if (localStorage.key(i).substr(0, 3) === 'id_') {
+            var idStorage = [];
+            idStorage.push(localStorage.getItem(localStorage.key(i)));
+
+            $('.game div').each(function () {
+                var id = this.id;
+                if (idStorage.includes(id)) {
+                    $('.game #' + id).html('OK');
+                    $('.game #' + id).addClass('select');
+                }
+            });
+        }
+    }
+});
+
 $(document).ready(function () {
     $('.game div').click(function () {
         var id = this.id;
@@ -29,9 +46,13 @@ $(document).ready(function () {
                         if ($('.game #' + id).html() === '') {
                             $('.game #' + id).html('OK');
                             $('.game #' + id).addClass('select');
+
+                            localStorage.setItem('id_' + id, id);
                         } else {
                             $('.game #' + id).html('');
                             $('.game #' + id).removeClass('select');
+
+                            localStorage.removeItem('id_' + id, id);
                         }
                     }
                     if ($(this).html() === 'OK') {
@@ -50,6 +71,8 @@ $(document).ready(function () {
 
             },
             complete: function () {
+                localStorage.setItem('score', count);
+
                 if (yiiOptions.sizeField === activeFields) {
                     $('#myModal').modal('show');
                     if (localStorage.getItem('winner')) {
@@ -60,11 +83,11 @@ $(document).ready(function () {
             }
         });
     });
-    
+
     $('#save-results').on('click', function () {
-        var winner = $('#winner').val();        
+        var winner = $('#winner').val();
         localStorage.setItem('winner', winner);
-        
+
         $.ajax({
             method: "POST",
             url: yiiOptions.saveResults,

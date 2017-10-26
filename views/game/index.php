@@ -24,7 +24,7 @@ $this->registerJs(
         </div>
     <?php endfor; ?>
     <div class="row counter">
-        
+        0
     </div>    
 </div>  
 
