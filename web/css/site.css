@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'digital-font';
+    src: url('../fonts/digital-7.ttf');
+}
+
 html,
 body {
     height: 100%;
@@ -114,18 +119,34 @@ a.desc:after {
     outline: none;
 }
 
+.center {
+    display: table;    
+}
+
 .game div {
     height: 100px;
     width: 100px;
-    background-color: yellowgreen;
+    background-color: #30e22d;
     border: 2px solid;
     border-radius: 10px;
 }
 
 .game div:hover {
-    background-color: blueviolet;
+    background-color: #efec23;
 }
 
 .select {
-    
+
+}
+
+.counter {
+    height: 80px;
+    width: 250px;
+    background-color: #2860ba;
+    border: 2px solid;
+    border-radius: 10px;
+    display: table;
+    margin: 10px auto;
+    font-family: digital-font;
+    font-size: 50px;
 }

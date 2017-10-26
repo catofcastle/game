@@ -8,6 +8,8 @@ function randomInteger(min, max) {
     return rand;
 }
 
+var count = 0;
+
 $(document).ready(function () {
     $('.game div').click(function () {
         var id = this.id;
@@ -19,6 +21,7 @@ $(document).ready(function () {
             data: 'id=' + id,
             success: function (response) {
                 var neighbors = response;
+                $('.counter').html(++count);
                 
                 $('.game div').each(function () {
                     var id = this.id;
@@ -37,7 +40,7 @@ $(document).ready(function () {
                 });
 
                 if (randomInteger(0, 100) > 96) {
-                   var rand = randomInteger(0, i - 1);
+                   var rand = randomInteger(0, i);
                    var elems = $('.game .select');
                    
                    $(elems[rand]).html('');

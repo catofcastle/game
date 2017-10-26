@@ -14,7 +14,7 @@ $this->registerJs(
 
 ?>
 
-<div class="container-fluid">
+<div class="container-fluid center">
     <?php for ($i = 1; $i <= $grid['widht']; $i++): ?>
         <div class="row game">
             <?php for ($j = 1; $j <= $grid['height']; $j++): ?>
@@ -22,4 +22,7 @@ $this->registerJs(
             <?php endfor; ?>
         </div>
     <?php endfor; ?>
+    <div class="row counter">
+        
+    </div>    
 </div>    
