@@ -11,20 +11,25 @@ function randomInteger(min, max) {
 var count = 0;
 
 $(window).on('load', function () {
-    for (var i = 0; i < localStorage.length; i++) {
-        if (localStorage.key(i).substr(0, 3) === 'id_') {
-            var idStorage = [];
-            idStorage.push(localStorage.getItem(localStorage.key(i)));
+    var idStorage = [];
 
-            $('.game div').each(function () {
-                var id = this.id;
-                if (idStorage.includes(id)) {
-                    $('.game #' + id).html('OK');
-                    $('.game #' + id).addClass('select');
-                }
-            });
+    for (var i = 0; i < localStorage.length; i++) {
+        if (localStorage.key(i) === 'score') {
+            $('.counter').html(localStorage.getItem(localStorage.key(i)));
+        }
+
+        if (localStorage.key(i).substr(0, 3) === 'id_') {
+            idStorage.push(localStorage.getItem(localStorage.key(i)));
         }
     }
+
+    $('.game div').each(function () {
+        var id = this.id;
+        if (idStorage.includes(id)) {
+            $('.game #' + id).html('OK');
+            $('.game #' + id).addClass('select');
+        }
+    });
 });
 
 $(document).ready(function () {
