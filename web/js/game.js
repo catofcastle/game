@@ -79,7 +79,7 @@ $(document).ready(function () {
                 localStorage.setItem('score', count);
 
                 if (yiiOptions.sizeField === activeFields) {
-                    $('#myModal').modal('show');
+                    $('#winners').modal('show');
                     if (localStorage.getItem('winner')) {
                         var storageWinner = localStorage.getItem('winner');
                         $('#winner').val(storageWinner);
@@ -98,7 +98,7 @@ $(document).ready(function () {
             url: yiiOptions.saveResults,
             data: {winner: winner, score: count},
             success: function () {
-                $('#myModal').modal('hide');
+                $('#winners').modal('hide');
                 alert('Ваше имя вписано в анналы победителей!');
             },
             error: function () {
@@ -116,6 +116,25 @@ $(document).ready(function () {
             localStorage.removeItem(localStorage.key(i));
         }
         location.reload();
+    });
+
+    $('#top-players').on('click', function () {
+        $.ajax({
+            method: "POST",
+            url: yiiOptions.topPlayers,
+            success: function (response) {
+                var topPlayers = response;
+                
+                topPlayers.forEach(function (item, i, arr) {
+                    $("#list ol").append('<li>' + arr[i]['name'] + '</li>');
+                });
+
+                $('#modalTopPlayers').modal('show');
+            },
+            error: function () {
+                alert('Opps! Something wrong!');
+            }
+        });
     });
 });
 

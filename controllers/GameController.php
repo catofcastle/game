@@ -56,8 +56,19 @@ class GameController extends Controller
         }
     }
 
-    public function actionTopResults()
+    public function actionTopPlayers()
     {
-        
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            
+            $topPlayers = Winner::find()
+                ->select('name')
+                ->orderBy(['score' => SORT_ASC])
+                ->limit(10)
+                ->asArray()
+                ->all();
+            
+            return $topPlayers;
+        }
     }
 }

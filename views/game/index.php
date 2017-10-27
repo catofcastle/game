@@ -8,6 +8,7 @@ $this->registerJsFile('@web/js/game.js', ['depends' => 'yii\web\JqueryAsset']);
 $options = [
     'getNeighbors' => Url::to(['game/get-neighbors'], true),
     'saveResults' => Url::to(['game/save-results'], true),
+    'topPlayers' => Url::to(['game/top-players'], true),
     'sizeField' => $grid['widht'] * $grid['height'],
 ];
 $this->registerJs(
@@ -23,10 +24,10 @@ $this->registerJs(
         </div>
         <form class="navbar-form navbar-right"> 
             <div class='btn-group'>    
-                <?php echo Html::button('Лучшие игроки', ['class' => 'btn btn-primary', 'id' => 'top-players']); ?>
+                <?= Html::button('Лучшие игроки', ['class' => 'btn btn-primary', 'id' => 'top-players']); ?>
             </div>
             <div class='btn-group'>
-                <?php echo Html::button('Новая игра', ['class' => 'btn btn-warning', 'id' => 'new-game']); ?>
+                <?= Html::button('Новая игра', ['class' => 'btn btn-warning', 'id' => 'new-game']); ?>
             </div>
         </form>    
     </div>
@@ -45,7 +46,7 @@ $this->registerJs(
     </div>    
 </div>  
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="winners" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -60,6 +61,25 @@ $this->registerJs(
       </div>
       <div class="modal-footer">
          <button type="button" class="btn btn-primary" id="save-results">Сохранить</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalTopPlayers" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">ТОП 10 Игроков</h4>
+      </div>
+      <div class="modal-body" id="list">
+          <ol>
+              
+          </ol>
+      </div>
+      <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>
       </div>
     </div>
