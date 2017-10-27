@@ -58,7 +58,8 @@ $this->title = "My little Game";
         <div class="form-group">
             <label for="winner">Введите ваше имя</label>
             <input type="text" class="form-control" required id="winner">
-        </div>
+            Ваше количество очков составило <span id="count"> </span>
+        </div> 
       </div>
       <div class="modal-footer">
          <button type="button" class="btn btn-primary" id="save-results">Сохранить</button>

@@ -95,7 +95,8 @@ $(document).ready(function () {
             },
             complete: function () {
                 localStorage.setItem('score', count);
-
+                $('#count').html(count);
+                
                 if (yiiOptions.sizeField === activeFields) {
                     $('#winners').modal('show');
                     if (localStorage.getItem('winner')) {
