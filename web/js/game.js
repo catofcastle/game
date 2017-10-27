@@ -27,7 +27,6 @@ $(window).on('load', function () {
         var id = this.id;
         if (idStorage.includes(id)) {
             $('.game #' + id).css('background-color', '#efec23');
-            $('.game #' + id).addClass('select');
         }
     });
 });
@@ -50,12 +49,10 @@ $(document).ready(function () {
                     if (neighbors.includes(id)) {
                         if ($('.game #' + id).css('background-color') === 'rgb(48, 226, 45)') {
                             $('.game #' + id).css('background-color', '#efec23');
-                            $('.game #' + id).addClass('select');
 
                             localStorage.setItem('id_' + id, id);
                         } else {
                             $('.game #' + id).css('background-color', '');
-                            $('.game #' + id).removeClass('select');
 
                             localStorage.removeItem('id_' + id, id);
                         }
@@ -65,11 +62,18 @@ $(document).ready(function () {
                     }
                 });
 
-                if (randomInteger(0, 100) > 96) {
+                if (randomInteger(0, 100) < 96) {
                     var rand = randomInteger(0, activeFields);
-                    var elems = $('.game .select');
-
-                    $(elems[rand]).html('');
+                    var idStorage = [];
+                    
+                    for (var i = 0; i < localStorage.length; i++) {
+                        if (localStorage.key(i).substr(0, 3) === 'id_') {
+                            idStorage.push(localStorage.getItem(localStorage.key(i)));
+                        }
+                    }
+                    
+                    var idRand = idStorage[rand];
+                    $('.game #' + idRand).css('background-color', '');
                 }
             },
             error: function () {
@@ -123,7 +127,7 @@ $(document).ready(function () {
             url: yiiOptions.topPlayers,
             success: function (response) {
                 var topPlayers = response;
-                
+
                 topPlayers.forEach(function (item, i, arr) {
                     $("#list ol").append('<li>' + arr[i]['name'] + '</li>');
                 });
