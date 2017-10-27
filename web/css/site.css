@@ -132,11 +132,11 @@ a.desc:after {
 }
 
 .game div:hover {
-    background-color: #efec23;
+     opacity: 0.3;
 }
 
 .select {
-
+    
 }
 
 .counter {

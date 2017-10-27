@@ -26,7 +26,7 @@ $(window).on('load', function () {
     $('.game div').each(function () {
         var id = this.id;
         if (idStorage.includes(id)) {
-            $('.game #' + id).html('OK');
+            $('.game #' + id).css('background-color', '#efec23');
             $('.game #' + id).addClass('select');
         }
     });
@@ -48,19 +48,19 @@ $(document).ready(function () {
                 $('.game div').each(function () {
                     var id = this.id;
                     if (neighbors.includes(id)) {
-                        if ($('.game #' + id).html() === '') {
-                            $('.game #' + id).html('OK');
+                        if ($('.game #' + id).css('background-color') === 'rgb(48, 226, 45)') {
+                            $('.game #' + id).css('background-color', '#efec23');
                             $('.game #' + id).addClass('select');
 
                             localStorage.setItem('id_' + id, id);
                         } else {
-                            $('.game #' + id).html('');
+                            $('.game #' + id).css('background-color', '');
                             $('.game #' + id).removeClass('select');
 
                             localStorage.removeItem('id_' + id, id);
                         }
                     }
-                    if ($(this).html() === 'OK') {
+                    if ($(this).css('background-color') === 'rgb(239, 236, 35)') {
                         ++activeFields;
                     }
                 });
@@ -112,7 +112,6 @@ $(document).ready(function () {
             if (localStorage.key(i) === 'winner') {
                 continue;
             }
-            console.log(localStorage.key(i));
             localStorage.removeItem(localStorage.key(i));
         }
         location.reload();
