@@ -74,6 +74,7 @@ $(document).ready(function () {
                     
                     var idRand = idStorage[rand];
                     $('.game #' + idRand).css('background-color', '');
+                    localStorage.removeItem('id_' + idRand, idRand);
                 }
             },
             error: function () {

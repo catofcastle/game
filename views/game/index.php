@@ -15,12 +15,13 @@ $this->registerJs(
     "var yiiOptions = " . \yii\helpers\Json::htmlEncode($options) . ";", View::POS_HEAD, 'yiiOptions'
 );
 
+$this->title = "My little Game";
 ?>
 
 <nav class="navbar navbar-default navbar-fixed-top" id="nav">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="">MY GAME</a>
+            <a class="navbar-brand" href="">My little Game</a>
         </div>
         <form class="navbar-form navbar-right"> 
             <div class='btn-group'>    
