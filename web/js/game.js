@@ -2,14 +2,21 @@ var urlHelper = function ($route) {
     return window.location.pathname.replace(/[\w-]+\/[\w-]+\\*$/, $route);
 };
 
+/**
+ * Рандомайзер
+ * @param {type} min Минимальное число
+ * @param {type} max Макисмальное число
+ * @returns {Number} Случайное число
+ */
 function randomInteger(min, max) {
     var rand = min - 0.5 + Math.random() * (max - min + 1);
     rand = Math.round(rand);
     return rand;
 }
 
-var count = 0;
-
+/**
+ * При повторном входе в игру, все результаты будут сохранены.
+ */
 $(window).on('load', function () {
     var idStorage = [];
 
@@ -30,6 +37,8 @@ $(window).on('load', function () {
         }
     });
 });
+
+var count = 0;
 
 $(document).ready(function () {
     $('.game div').click(function () {
@@ -61,8 +70,12 @@ $(document).ready(function () {
                         ++activeFields;
                     }
                 });
-
-                if (randomInteger(0, 100) < 96) {
+                
+                /**
+                 * Данный блок отвечает за случайное отключение любой лампочки
+                 * с шансом при каждом ходе 1 к 25
+                 */
+                if (randomInteger(0, 100) > 96) {
                     var rand = randomInteger(0, activeFields);
                     var idStorage = [];
                     
@@ -93,7 +106,10 @@ $(document).ready(function () {
             }
         });
     });
-
+    
+    /**
+     * Сохрание имени победителя и его счёта.
+     */
     $('#save-results').on('click', function () {
         var winner = $('#winner').val();
         localStorage.setItem('winner', winner);
@@ -111,7 +127,10 @@ $(document).ready(function () {
             }
         });
     });
-
+    
+    /**
+     * Начало новой игры
+     */
     $('#new-game').on('click', function () {
         for (var i = localStorage.length - 1; i >= 0; i--) {
             if (localStorage.key(i) === 'winner') {
@@ -121,7 +140,10 @@ $(document).ready(function () {
         }
         location.reload();
     });
-
+    
+    /**
+     * ТОП Игроков
+     */
     $('#top-players').on('click', function () {
         $.ajax({
             method: "POST",

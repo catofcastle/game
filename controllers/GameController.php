@@ -8,14 +8,22 @@ use \app\models\Winner;
 
 class GameController extends Controller
 {
-
+    
+    /**
+     * Генерация вида (index)
+     * @return type
+     */
     public function actionIndex()
     {
         $grid = Yii::$app->params['grid'];
 
         return $this->render('index', ['grid' => $grid]);
     }
-
+    
+    /**
+     * Алгоритм, вычисляющей соседние значения элемента массива
+     * @return type array Возвращает соседние значения элемента массива
+     */
     public function actionGetNeighbors()
     {
         if (Yii::$app->request->isAjax) {
@@ -40,7 +48,10 @@ class GameController extends Controller
             return json_encode($neighbors);
         }
     }
-
+    
+    /**
+     * Сохранение имени победителя и его счёт в БД
+     */
     public function actionSaveResults()
     {
         if (Yii::$app->request->isAjax) {
@@ -55,7 +66,10 @@ class GameController extends Controller
             $winner->insert();
         }
     }
-
+    
+    /**
+     * @return type array Возвращает ТОП 10 лучших игроков из БД
+     */
     public function actionTopPlayers()
     {
         if (Yii::$app->request->isAjax) {
