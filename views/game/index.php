@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use yii\helpers\Html;
 use yii\web\View;
 
 $this->registerJsFile('@web/js/game.js', ['depends' => 'yii\web\JqueryAsset']);
@@ -14,6 +15,22 @@ $this->registerJs(
 );
 
 ?>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="nav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="">MY GAME</a>
+        </div>
+        <form class="navbar-form navbar-right"> 
+            <div class='btn-group'>    
+                <?php echo Html::button('Лучшие игроки', ['class' => 'btn btn-primary', 'id' => 'top-players']); ?>
+            </div>
+            <div class='btn-group'>
+                <?php echo Html::button('Новая игра', ['class' => 'btn btn-warning', 'id' => 'new-game']); ?>
+            </div>
+        </form>    
+    </div>
+</nav>
 
 <div class="container-fluid center">
     <?php for ($i = 1; $i <= $grid['widht']; $i++): ?>

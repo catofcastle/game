@@ -106,6 +106,17 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#new-game').on('click', function () {
+        for (var i = localStorage.length - 1; i >= 0; i--) {
+            if (localStorage.key(i) === 'winner') {
+                continue;
+            }
+            console.log(localStorage.key(i));
+            localStorage.removeItem(localStorage.key(i));
+        }
+        location.reload();
+    });
 });
 
 
